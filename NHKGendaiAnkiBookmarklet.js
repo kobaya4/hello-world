@@ -28,8 +28,13 @@ export default () => {
 
     let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
     let titleLineDiv = document.createElement("table");
-    titleLineDiv.setAttribute("id",'titleline');
-    titleLineDiv.rows[0].cells[0].innerText = `python3 NHKGendaiEigo.py '${titeLine}' "${text}"`;
+    let titleTR = document.createElement("tr");
+    let titleTD = document.createElement("td");
+    titleTD.textContent = `python3 NHKGendaiEigo.py '${titeLine}' "${text}"`;
+    titleTR.appendChild(titleTD);
+    titleLineDiv.appendChild(titleTR);
+    //titleLineDiv.setAttribute("id",'titleline');
+    //titleLineDiv.rows[0].cells[0].innerText = `python3 NHKGendaiEigo.py '${titeLine}' "${text}"`;
     insert.appendChild(titleLineDiv);
     /*
     let btn = document.createElement("button");
