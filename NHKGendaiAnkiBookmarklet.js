@@ -42,10 +42,14 @@ export default () => {
         text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
     }
     let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
-    let addedElement = document.createElement("div");
-    addedElement.className = 'added';
-    addedElement.innerHTML = titeLine + text;
-    insert.appendChild(addedElement);
+    let titleLineDiv = document.createElement("div");
+    titleLineDiv.className = 'titleline';
+    titleLineDiv.innerHTML = titeLine;
+    insert.appendChild(titleLineDiv);
+    let contentDiv = document.createElement("div");
+    contentDiv.className = 'content';
+    contentDiv.innerHTML = text;
+    insert.appendChild(contentDiv);
 
     alert(text);
 }
