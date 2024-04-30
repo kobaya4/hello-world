@@ -44,11 +44,10 @@ export default () => {
 
     alert(text);
     let addCard = {
-        "action": "addNotes",
+        "action": "addNote",
         "version": 6,
         "params": {
-            "notes": [
-                {
+            "note": {
                     "deckName": "NHKニュースで学ぶ現代英語",
                     "modelName": "NHKニュースで学ぶ現代英語",
                     "fields": {
@@ -59,18 +58,18 @@ export default () => {
                     "options": { "allowDuplicate": true },
                     "tags": []
                 }
-            ]
         }
     }
     document.getElementById('AddCard2Anki').addEventListener("click", () => {
         let titleLine = document.getElementById("titleline").innerHTML;
         let line = document.getElementById("content").innerHTML;
-        let note = JSON.parse(JSON.stringify(addCard.params.notes[0]))
-        addCard.params.notes.length = 0;
-        note.fields.Title = titleLine;
-        note.fields.Front = line;
-        note.fields.Back = titleLine;
-        addCard.params.notes.push(JSON.parse(JSON.stringify(note)));
+        //let note = JSON.parse(JSON.stringify(addCard.params.note))
+        //addCard.params.notes.length = 0;
+        addCard.params.note.fields.Title = titleLine;
+        addCard.params.note.fields.Front = line;
+        addCard.params.note.fields.Back = titleLine;
+        //addCard.params.note.push(JSON.parse(JSON.stringify(note)));
+        //addCard.params.note.push(JSON.parse(JSON.stringify(note)));
         //データを送信
         let xhr = new XMLHttpRequest;       //インスタンス作成
         xhr.onload = function () {        //レスポンスを受け取った時の処理（非同期）
