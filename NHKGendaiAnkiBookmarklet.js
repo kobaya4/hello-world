@@ -29,7 +29,7 @@ export default () => {
     let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
     let titleLineDiv = document.createElement("div");
     titleLineDiv.setAttribute("id",'titleline');
-    titleLineDiv.innerText = `python ${titeLine} ${text}`;
+    titleLineDiv.innerText = `python3 NHKGendaiEigo.ps '${titeLine}' "${text}"`;
     insert.appendChild(titleLineDiv);
     /*
     let btn = document.createElement("button");
