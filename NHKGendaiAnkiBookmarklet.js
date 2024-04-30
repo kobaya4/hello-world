@@ -34,11 +34,12 @@ export default () => {
     //text += `${date_time}\n\n`;
     let sentences = document.querySelectorAll("#article-1 > div.gc-article-text > div > p");
     //text += `${sentences.length}\n`;
+    let text = "";
     for (let i = 0; i < sentences.length / 7; i++) {
         let eLine = sentences[i * 7].querySelector("strong").innerText;
         let jLine = `${sentences[i * 7 + 1].innerText}`;
         let sentenseNo = ("0" + (i + 1)).slice(-2);
-        let text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
+        text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
     }
     let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
     let addedElement = document.createElement("div");
