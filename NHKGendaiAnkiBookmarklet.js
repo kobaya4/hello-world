@@ -16,7 +16,7 @@ export default () => {
     let jTitle = document.getElementsByClassName('title')[0].innerText;
     let eTitle = document.getElementsByClassName('gc-article-text')[0].getElementsByTagName("div")[0].getElementsByTagName("p")[0].getElementsByTagName("strong")[0].innerText;
     let titeLine = `${titleDate} <a href="${url}"><br>${jTitle}</a><br>${eTitle}`;
- 
+
     let sentences = document.querySelectorAll("#article-1 > div.gc-article-text > div > p");
     let text = "";
     for (let i = 0; i < sentences.length / 7; i++) {
@@ -29,18 +29,56 @@ export default () => {
 
     let btn = document.createElement("button");
     btn.innerHTML = "Ankiへ追加";
-    btn.setAttribute("id","AddCard2Anki");
+    btn.setAttribute("id", "AddCard2Anki");
     insert.appendChild(btn);
 
     let titleLineDiv = document.createElement("div");
     titleLineDiv.className = 'titleline';
     titleLineDiv.innerHTML = titeLine;
     insert.appendChild(titleLineDiv);
-    
+
     let contentDiv = document.createElement("div");
     contentDiv.className = 'content';
     contentDiv.innerHTML = text;
     insert.appendChild(contentDiv);
 
     alert(text);
-}
+    let addCard = {
+        "action": "addNotes",
+        "version": 6,
+        "params": {
+            "notes": [
+                {
+                    "deckName": "NHKニュースで学ぶ現代英語",
+                    "modelName": "NHKニュースで学ぶ現代英語",
+                    "fields": {
+                        "Title": "{Title}",
+                        "Front": "{Front}",
+                        "Back": "{Back}"
+                    },
+                    "options": { "allowDuplicate": true },
+                    "tags": []
+                }
+            ]
+        }
+    }
+    document.getElementById('AddCard2Anki').addEventListener("click", () => {
+        let titleLine = document.getElementById("titleline").innerHTML;
+        let line = document.getElementById("content").innerHTML;
+        note = JSON.parse(JSON.stringify(addCard.params.notes[0]))
+        addCard.params.notes.length = 0;
+        note.fields.Title = titleLine;
+        note.fields.Front = line;
+        note.fields.Back = titleLine;
+        addCard.params.notes.push(JSON.parse(JSON.stringify(note)));
+        //データを送信
+        xhr = new XMLHttpRequest;       //インスタンス作成
+        xhr.onload = function () {        //レスポンスを受け取った時の処理（非同期）
+            var res = xhr.responseText;
+            if (res.length > 0) alert(res);
+        };
+        xhr.onerror = function () {       //エラーが起きた時の処理（非同期）
+            alert("error!");
+        };
+    }
+    )}
