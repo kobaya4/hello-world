@@ -22,8 +22,8 @@ export default () => {
         //text += `${sentences[1].innerText}\n`;
         for (let i = 0; i < sentences.length ; i +=7 ) {
             let eLine = sentences[i].querySelector("strong").innerText;
-            text += `${eLine}\n`;
-            text += `${sentences[i+1].innerText}\n\n`;
+            let jLine = `${sentences[i+1].innerText}`;
+            text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai20240422_01.aac]</details><hr></hr>`;
         }
         let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
         let addedElement = document.createElement("div");
