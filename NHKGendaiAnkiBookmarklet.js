@@ -28,8 +28,9 @@ export default () => {
 
     let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
     let titleLineDiv = document.createElement("textarea");
-    titleLineDiv.cols = 80;
+    titleLineDiv.cols = 50;
     titleLineDiv.rows = 40;
+    titleLineDiv.setAttribute("background","#ffffff");
     titleLineDiv.value = `python3 NHKGendaiEigo.py '${titeLine}' "${text}"`;
     //titleLineDiv.setAttribute("id",'titleline');
     //titleLineDiv.rows[0].cells[0].innerText = `python3 NHKGendaiEigo.py '${titeLine}' "${text}"`;
