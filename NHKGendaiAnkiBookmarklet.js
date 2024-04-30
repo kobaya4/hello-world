@@ -25,8 +25,13 @@ export default () => {
         let sentenseNo = ("0" + (i + 1)).slice(-2);
         text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
     }
-    let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
 
+    let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
+    let titleLineDiv = document.createElement("div");
+    titleLineDiv.setAttribute("id",'titleline');
+    titleLineDiv.innerText = `python ${titeLine} ${text}`;
+    insert.appendChild(titleLineDiv);
+    /*
     let btn = document.createElement("button");
     btn.innerHTML = "Ankiへ追加";
     btn.setAttribute("id", "AddCard2Anki");
@@ -83,4 +88,6 @@ export default () => {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(addCard,undefined,4));    //送信実行
     }
-    )}
+    )
+    */
+}
