@@ -80,5 +80,8 @@ export default () => {
         xhr.onerror = function () {       //エラーが起きた時の処理（非同期）
             alert("error!");
         };
+        xhr.open('post', 'http://localhost:8765', true);    //(1)
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(addPermission,undefined,4));    //送信実行
     }
     )}
