@@ -72,9 +72,9 @@ export default () => {
         note.fields.Back = titleLine;
         addCard.params.notes.push(JSON.parse(JSON.stringify(note)));
         //データを送信
-        xhr = new XMLHttpRequest;       //インスタンス作成
+        let xhr = new XMLHttpRequest;       //インスタンス作成
         xhr.onload = function () {        //レスポンスを受け取った時の処理（非同期）
-            var res = xhr.responseText;
+            let res = xhr.responseText;
             if (res.length > 0) alert(res);
         };
         xhr.onerror = function () {       //エラーが起きた時の処理（非同期）
