@@ -33,12 +33,12 @@ export default () => {
     insert.appendChild(btn);
 
     let titleLineDiv = document.createElement("div");
-    titleLineDiv.className = 'titleline';
+    titleLineDiv.setAttribute("id",'titleline');
     titleLineDiv.innerHTML = titeLine;
     insert.appendChild(titleLineDiv);
 
     let contentDiv = document.createElement("div");
-    contentDiv.className = 'content';
+    contentDiv.setAttribute("id",'content');
     contentDiv.innerHTML = text;
     insert.appendChild(contentDiv);
 
