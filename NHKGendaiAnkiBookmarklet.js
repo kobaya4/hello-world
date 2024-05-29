@@ -9,7 +9,7 @@ export default () => {
     let month = ("00" + (releaseDate.getMonth() + 1)).slice(-2);
     let day = ("00" + (releaseDate.getDate())).slice(-2);
     let onAirDate = releaseDate.getFullYear() + ("00" + (releaseDate.getMonth() + 1)).slice(-2) + ("00" + (releaseDate.getDate())).slice(-2);
-    //console.log(onAirDate);
+    console.log(onAirDate);
     let d = new Date(year + '-' + month + '-' + day);
     let dayList = ['日', '月', '火', '水', '木', '金', '土'];
     let titleDate = year + '-' + month + '-' + day + ' (' + dayList[releaseDate.getDay()] + ') ';
