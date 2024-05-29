@@ -25,7 +25,8 @@ export default () => {
         let sentenseNo = ("0" + (i + 1)).slice(-2);
         text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
     }
-    let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
+    //let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
+    let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1)");
     let titleLineDiv = document.createElement("textarea");
     titleLineDiv.cols = 90;
     titleLineDiv.rows = 50;
