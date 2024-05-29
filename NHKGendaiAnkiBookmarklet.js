@@ -5,11 +5,12 @@ export default () => {
         return;
     }
     let releaseDate = new Date(document.getElementsByClassName('release-date')[0].innerText.replace("初回放送日：", "").replace(/[年月]/g, "-").replace("日", ""));
+    console.log("releaseDate: ",releaseDate);
     let year = releaseDate.getFullYear();
     let month = ("00" + (releaseDate.getMonth() + 1)).slice(-2);
     let day = ("00" + (releaseDate.getDate())).slice(-2);
     let onAirDate = releaseDate.getFullYear() + ("00" + (releaseDate.getMonth() + 1)).slice(-2) + ("00" + (releaseDate.getDate())).slice(-2);
-    console.log(onAirDate);
+    console.log("onAirDate: ",onAirDate);
     let d = new Date(year + '-' + month + '-' + day);
     let dayList = ['日', '月', '火', '水', '木', '金', '土'];
     let titleDate = year + '-' + month + '-' + day + ' (' + dayList[releaseDate.getDay()] + ') ';
@@ -19,7 +20,7 @@ export default () => {
 
     let sentences = document.querySelectorAll("#article-1 > div.gc-article-text > div > p");
     let text = "";
-    console.log(sentences.length);
+    console.log("# of sentences: ",sentences.length);
     for (let i = 0; i < sentences.length / 7; i++) {
         let eLine = sentences[i * 7].querySelector("strong").innerText;
         let jLine = `${sentences[i * 7 + 1].innerText}`;
