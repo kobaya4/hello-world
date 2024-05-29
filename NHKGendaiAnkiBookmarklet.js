@@ -18,7 +18,7 @@ export default () => {
     let eTitle = document.getElementsByClassName('gc-article-text')[0].getElementsByTagName("div")[0].getElementsByTagName("p")[0].getElementsByTagName("strong")[0].innerText;
     let titeLine = `${titleDate} <a href="${url}"><br>${jTitle}</a><br>${eTitle}`;
 
-    let sentences = document.querySelectorAll("#article-1 > div.gc-article-text > div > p");
+    let sentences = document.querySelectorAll("#article-1 > div.gc-article-expanded > div.gc-article-text > div > p");
     let text = "";
     //console.log("# of sentences: ",sentences.length);
     for (let i = 0; i < sentences.length / 7; i++) {
