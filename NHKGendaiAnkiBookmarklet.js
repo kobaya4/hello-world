@@ -20,7 +20,7 @@ export default () => {
 
     let sentences = document.querySelectorAll("#article-1 > div.gc-article-expanded > div.gc-article-text > div > p");
     let text = "";
-    //console.log("# of sentences: ",sentences.length);
+    console.log("# of sentences: ",sentences.length);
     for (let i = 0; i < sentences.length / 7; i++) {
         let eLine = sentences[i * 7].querySelector("strong").innerText;
         let jLine = sentences[i * 7 + 1].innerText;
