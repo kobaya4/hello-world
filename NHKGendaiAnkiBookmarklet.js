@@ -21,9 +21,9 @@ export default () => {
     let sentences = document.querySelectorAll("#article-1 > div.gc-article-expanded > div.gc-article-text > div > p");
     let text = "";
     console.log("# of sentences: ",sentences.length);
-    for (let i = 0; i < sentences.length / 7; i++) {
-        let eLine = sentences[i * 7].querySelector("strong").innerText;
-        let jLine = sentences[i * 7 + 1].innerText;
+    for (let i = 0; i < sentences.length / 5; i++) {
+        let eLine = sentences[i * 5].querySelector("strong").innerText;
+        let jLine = sentences[i * 5 + 1].innerText;
         let sentenseNo = ("0" + (i + 1)).slice(-2);
         text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
     }
