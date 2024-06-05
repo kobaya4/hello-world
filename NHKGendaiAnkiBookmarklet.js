@@ -22,11 +22,12 @@ export default () => {
     let text = "";
     console.log("# of sentences: ",sentences.length);
     for (let i = 0; i < sentences.length; i++) {
-        if ( (sentenseNo = sentences[i].innerText.match(/^センテンス(\d)/)) != null) {
+        let sentenseNo = sentences[i].innerText.match(/^センテンス(\d+)/);
+        if (sentenseNo != null) {
             console.log("sentencesNo: ",sentenseNo);
             let eLine = sentences[i].querySelector("strong").innerText;
             let jLine = sentences[i + 1].innerText;
-            let sentenseNo = ("0" + (sentenseNo + 1)).slice(-2);
+            sentenseNo = ("0" + (sentenseNo + 1)).slice(-2);
             text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
             i += 2;
         }
