@@ -16,7 +16,7 @@ export default () => {
     let titleDate = year + '-' + month + '-' + day + ' (' + dayList[releaseDate.getDay()] + ') ';
     let jTitle = document.getElementsByClassName('title')[0].innerText;
     let eTitle = document.getElementsByClassName('gc-article-text')[0].getElementsByTagName("div")[0].getElementsByTagName("p")[0].getElementsByTagName("strong")[0].innerText;
-    let titeLine = `${titleDate} <a href="${url}"><br>${jTitle}</a><br>${eTitle}`;
+    let titleLine = `${titleDate} <a href="${url}"><br>${jTitle}</a><br>${eTitle}`;
 
     let sentences = document.querySelectorAll("#article-1 > div.gc-article-expanded > div.gc-article-text > div > p");
     let text = "";
@@ -40,6 +40,44 @@ export default () => {
     titleLineDiv.cols = 90;
     titleLineDiv.rows = 50;
     titleLineDiv.style.backgroundColor = "#ffffff";
-    titleLineDiv.value = `python3 /Users/kobaya4/Documents/GitHub/NHKEnNews/NHKGendaiEigo.py '${titeLine}' "${text}"`;
+    titleLineDiv.value = `python3 /Users/kobaya4/Documents/GitHub/NHKEnNews/NHKGendaiEigo.py '${titleLine}' "${text}"`;
     insert.appendChild(titleLineDiv);
+
+    let addCard = {
+        "action": "addNotes",
+        "version": 6,
+        "params": {
+            "notes": [
+                    {
+                    "deckName": "NHKニュースで学ぶ現代英語",
+                    "modelName": "NHKニュースで学ぶ現代英語",
+                    "fields": {
+                        "Title": "{Title}",
+                        "Front": "{Front}",
+                        "Back": "{Back}"
+                    },
+                    "options": {"allowDuplicate": true},
+                    "tags": []
+                } 
+            ]
+        }
+    }
+    note = JSON.parse(JSON.stringify(addCard.params.notes[0]))
+    addCard.params.notes.length = 0;
+    note.fields.Title = titleLine;
+    note.fields.Front = text;
+    note.fields.Back = titleLine;
+    addCard.params.notes.push(JSON.parse(JSON.stringify(note)));
+    //データを送信
+    xhr = new XMLHttpRequest;       //インスタンス作成
+    xhr.onload = function () {        //レスポンスを受け取った時の処理（非同期）
+        var res = xhr.responseText;
+        if (res.length > 0) alert(res);
+    };
+    xhr.onerror = function () {       //エラーが起きた時の処理（非同期）
+        alert("error!");
+    }
+    xhr.open('post', 'http://localhost:8765', true);    //(1)
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(addPermission,undefined,4));    //送信実行
 }
