@@ -23,8 +23,10 @@ export default () => {
     console.log("# of sentences: ",sentences.length);
     for (let i = 0; i < sentences.length; i++) {
         let sentenseNo = sentences[i].innerText.match(/^センテンス(\d+)/)[0];
-        console.log("sentencesNo: ",sentenseNo);
+        let sentenseNo1 = sentences[i].innerText.match(/^センテンス(\d+)/)[1];
         if (sentenseNo != null) {
+            console.log("sentencesNo: ",sentenseNo);
+            console.log("sentencesNo1: ",sentenseNo1);
             let eLine = sentences[i].querySelector("strong").innerText;
             let jLine = sentences[i + 1].innerText;
             sentenseNo = ("0" + sentenseNo).slice(-2);
