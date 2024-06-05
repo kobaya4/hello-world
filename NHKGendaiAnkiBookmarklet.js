@@ -79,5 +79,5 @@ export default () => {
     }
     xhr.open('post', 'http://localhost:8765', true);    //(1)
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(addPermission,undefined,4));    //送信実行
+    xhr.send(JSON.stringify(addCard,undefined,4));    //送信実行
 }
