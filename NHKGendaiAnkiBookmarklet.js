@@ -22,19 +22,15 @@ export default () => {
     let text = "";
     console.log("# of sentences: ",sentences.length);
     for (let i = 0; i < sentences.length; i++) {
-        let sentenseNo = sentences[i].innerText.match(/^センテンス(\d+)/);
+        let sentenseNo = sentences[i].innerText.match(/^センテンス(\d+)/)[0];
+        console.log("sentencesNo: ",sentenseNo);
         if (sentenseNo != null) {
-            console.log("sentencesNo: ",sentenseNo);
             let eLine = sentences[i].querySelector("strong").innerText;
             let jLine = sentences[i + 1].innerText;
-            sentenseNo = ("0" + (sentenseNo + 1)).slice(-2);
+            sentenseNo = ("0" + sentenseNo).slice(-2);
             text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
             i += 2;
         }
-        //let eLine = sentences[i * 5].querySelector("strong").innerText;
-        //let jLine = sentences[i * 5 + 1].innerText;
-        //let sentenseNo = ("0" + (i + 1)).slice(-2);
-        //text += `<details><summary>${jLine}<br></summary><br><div>${eLine}</div>[sound:NHKGendai${onAirDate}_${sentenseNo}.aac]</details><hr>`;
     }
     //let insert = document.querySelector("#app > div.main-content-wrapper > div:nth-child(1) > section > div.tabs-wrapper > div.tabs-contents > section:nth-child(4) > section > div.episode-detail-article-contents");
     let insert = document.querySelector("#article-1 > div.gc-article-expanded > div.gc-article-text > div");
